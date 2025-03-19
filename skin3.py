@@ -275,8 +275,7 @@ elif action == "About Us":
     # Display the quote in italics using markdown
     st.markdown('<div class="quote">"We use digital AI tool to assess your skin health and provide you with personalised insights and recommendations."</div>', unsafe_allow_html=True)
 
-st.write("---")
-st.write("Developed with :heart: by Himika Mishra.")
+
 
 # Footer styles and content
 footer_style = """

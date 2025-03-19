@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis</title>
+</head>
+<body>
+    <h2>Upload Your Face Image</h2>
+    <input type="file" id="fileInput">
+    <button onclick="uploadImage()">Analyze</button>
+    <p id="result"></p>
+
+    <script>
+        function uploadImage() {
+            let file = document.getElementById("fileInput").files[0];
+            let formData = new FormData();
+            formData.append("file", file);
+
+            fetch("/upload", { method: "POST", body: formData })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerHTML = 
+                    "Wrinkles: " + data.wrinkles + "<br>" +
+                    "Spots: " + data.spots + "<br>" +
+                    "Estimated Skin Age: " + data.estimated_age;
+            });
+        }
+    </script>
+</body>
+</html>
